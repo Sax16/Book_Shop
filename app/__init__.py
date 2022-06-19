@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Testing server'
+    return render_template('index.html')
 
 
 def page_not_found(error):
