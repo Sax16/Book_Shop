@@ -1,7 +1,9 @@
 from flask import Flask, redirect, render_template, request, url_for
+from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 
+csrf = CSRFProtect()
 
 @app.route('/')
 def index():
@@ -11,6 +13,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 
+    #CSRF (Cross-site Request Forgery)
     if request.method == 'POST':
         user = request.form['user']
         password = request.form['password']
@@ -29,5 +32,6 @@ def page_not_found(error):
 
 def initialize_app(config):
     app.config.from_object(config)
+    csrf.init_app(app)
     app.register_error_handler(404, page_not_found)
     return app
