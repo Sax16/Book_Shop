@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -12,12 +12,13 @@ def index():
 def login():
 
     if request.method == 'POST':
-        """ user = request.form['user']
-        password = request.form['password'] """
-        print(request.form['user'])
-        print(request.form['password'])
+        user = request.form['user']
+        password = request.form['password']
 
-        return 'Ok'
+        if user == 'admin' and password == '1234':
+            return redirect(url_for('index'))
+        else:
+            return render_template('auth/login.html')
     else:
         return render_template('auth/login.html')
 
