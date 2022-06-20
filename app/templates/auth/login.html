@@ -14,11 +14,12 @@
     <h1 class="h3 mb-3 fw-normal">Sign In</h1>
 
     <div class="form-floating">
-        <input type="user" class="form-control" id="floatingInput" name="user" placeholder="user" autofocus>
+        <input type="user" class="form-control" id="floatingInput" name="user" placeholder="user" minlength="5"
+            maxlength="20" required autofocus>
         <label for="floatingInput">User</label>
     </div>
     <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" minlength="5" required>
         <label for="floatingPassword">Password</label>
     </div>
 
